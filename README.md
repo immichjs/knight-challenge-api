@@ -18,7 +18,7 @@ O **Knight Challenge API** é um desafio técnico.
 
 ## Tecnologias
 
--	Nest.js
+- Nest.js
 - MongoDB
 - Mongoose
 - Jest
@@ -87,9 +87,9 @@ Acesse API em http://localhost:3001.
 
 ### Configuração
 
-Antes de rodar o projeto, é necessário configurar o Google Auth. Siga os passos abaixo:
+Antes de rodar o projeto, Siga os passos abaixo:
 
-3. No backend (api), crie um arquivo .env com as seguintes variáveis:
+4. No backend (api), crie um arquivo .env com as seguintes variáveis:
 
 ```bash
 PORT=3001
