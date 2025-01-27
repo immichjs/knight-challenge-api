@@ -1,10 +1,11 @@
 # Knight Challenge API
 
-Este repositório fornece um **MVP Template** (Produto Mínimo Viável) com um ambiente de desenvolvimento completo para iniciar projetos que envolvem uma aplicação cliente em **Nuxt.js 3** e uma API backend em **Nest.js**. Além disso, o template já vem com autenticação via **Google Auth** implementada em ambas as partes, simplificando o desenvolvimento de aplicações que exigem login social.
+Este repositório é uma API em Nest.js utilizando Clean Arch e DDD.
 
 ## Índice
 
 - [Introdução](#introdução)
+- [Tecnologias](#tecnologias)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Instalação](#instalação)
 - [Recursos](#recursos)
@@ -14,6 +15,14 @@ Este repositório fornece um **MVP Template** (Produto Mínimo Viável) com um a
 ## Introdução
 
 O **Knight Challenge API** é um desafio técnico.
+
+## Tecnologias
+
+-	Nest.js
+- MongoDB
+- Mongoose
+- Jest
+- Docker
 
 ## Estrutura do Projeto
 
