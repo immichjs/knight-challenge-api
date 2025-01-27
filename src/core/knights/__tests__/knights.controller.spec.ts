@@ -37,7 +37,7 @@ describe('[KnightsController]', () => {
 			_id: ids[2],
 			weapons: [KnightHelper.createWeapon({ equipped: true })],
 			attributes: KnightHelper.createAttribute(),
-			deletedAt: true,
+			isDeleted: true,
 		}),
 	];
 
@@ -86,7 +86,7 @@ describe('[KnightsController]', () => {
 
 		it('should return the heroes', async () => {
 			knightServiceMock.find.mockResolvedValue(
-				knightsMock.filter((knight) => knight.deletedAt),
+				knightsMock.filter((knight) => knight.isDeleted),
 			);
 
 			const result = await service.find(EFilter.HEROES);

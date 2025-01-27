@@ -15,7 +15,7 @@ export class SoftDeleteKnightUseCase {
 			throw new KnightNotFoundException();
 		}
 
-		if (knight.deletedAt) {
+		if (knight.isDeleted) {
 			throw new KnightAlreadyDeadException();
 		}
 

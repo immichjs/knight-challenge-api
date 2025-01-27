@@ -11,7 +11,7 @@ export class KnightMapper {
 			weapons: raw.weapons,
 			attributes: raw.attributes,
 			keyAttribute: raw.keyAttribute,
-			deletedAt: raw.deletedAt,
+			isDeleted: raw.isDeleted,
 		};
 	}
 }

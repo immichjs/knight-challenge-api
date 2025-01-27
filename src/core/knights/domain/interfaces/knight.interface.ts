@@ -10,5 +10,5 @@ export class IKnight {
 	weapons: Weapon[];
 	attributes: Attribute;
 	keyAttribute: EAttribute;
-	deletedAt: boolean;
+	isDeleted: boolean;
 }

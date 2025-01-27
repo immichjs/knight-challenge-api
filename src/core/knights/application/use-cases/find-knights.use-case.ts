@@ -13,8 +13,8 @@ export class FindKnightsUseCase {
 	@Inject() private readonly knightCalculationService: KnightCalculationService;
 
 	public async execute(input?: EFilter): Promise<KnightResponseDto[]> {
-		const deletedAtFilter = input === EFilter.HEROES;
-		const knights = await this.knightRepository.find(deletedAtFilter);
+		const isDeletedFilter = input === EFilter.HEROES;
+		const knights = await this.knightRepository.find(isDeletedFilter);
 
 		return this.knightCalculationService.processKnightsResponse(knights);
 	}

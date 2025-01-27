@@ -4,7 +4,7 @@ import { Knight } from '../entities/knight';
 import { IKnight } from './knight.interface';
 
 export interface IKnightRepository {
-	find(deletedAt?: boolean): Promise<IKnight[]>;
+	find(isDeleted?: boolean): Promise<IKnight[]>;
 	findById(id: string): Promise<IKnight>;
 	findOne(data: Partial<Knight>): Promise<IKnight>;
 	create(data: CreateKnightDto): Promise<IKnight>;

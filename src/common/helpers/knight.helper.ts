@@ -13,7 +13,7 @@ interface ICreateKnightHelperOptions {
 	weapons: Weapon[];
 	attributes: Attribute;
 	keyAttribute?: EAttribute;
-	deletedAt?: boolean;
+	isDeleted?: boolean;
 }
 
 interface ICreateWeaponHelperOptions {
@@ -41,7 +41,7 @@ export class KnightHelper {
 		weapons,
 		attributes,
 		keyAttribute,
-		deletedAt,
+		isDeleted,
 	}: ICreateKnightHelperOptions): Knight {
 		const knight = {
 			_id: _id ?? new Types.ObjectId(),
@@ -53,7 +53,7 @@ export class KnightHelper {
 			attributes,
 			keyAttribute:
 				keyAttribute ?? faker.helpers.arrayElement(Object.values(EAttribute)),
-			deletedAt: deletedAt ?? false,
+			isDeleted: isDeleted ?? false,
 		};
 
 		return knight;

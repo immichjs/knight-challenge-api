@@ -56,7 +56,7 @@ describe('[FindKnightByIdUseCase]', () => {
 					weapons: [KnightHelper.createWeapon({ equipped: true })],
 					attributes: KnightHelper.createAttribute(),
 				}),
-				deletedAt: false,
+				isDeleted: false,
 			} as IKnight;
 
 			repositoryMock.findById.mockResolvedValue(knightMock);

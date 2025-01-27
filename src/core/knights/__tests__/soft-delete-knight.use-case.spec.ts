@@ -37,7 +37,7 @@ describe('[SoftDeleteKnightUseCase]', () => {
 			const knight = KnightHelper.createKnight({
 				weapons: [KnightHelper.createWeapon({ equipped: true })],
 				attributes: KnightHelper.createAttribute(),
-				deletedAt: true,
+				isDeleted: true,
 			});
 			repositoryMock.findById.mockResolvedValue(knight);
 

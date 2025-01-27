@@ -31,7 +31,7 @@ export class Knight {
 	keyAttribute: EAttribute;
 
 	@Prop({ default: false })
-	deletedAt: boolean;
+	isDeleted: boolean;
 }
 
 export const KnightSchema = SchemaFactory.createForClass(Knight);

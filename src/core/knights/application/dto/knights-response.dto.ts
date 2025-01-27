@@ -13,5 +13,5 @@ export class KnightResponseDto {
 	keyAttribute: EAttribute;
 	attack: number;
 	exp: number;
-	deletedAt: boolean;
+	isDeleted: boolean;
 }

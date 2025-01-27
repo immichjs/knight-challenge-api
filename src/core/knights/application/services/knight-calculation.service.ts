@@ -22,7 +22,7 @@ export class KnightCalculationService {
 			weapons,
 			attributes,
 			keyAttribute,
-			deletedAt,
+			isDeleted,
 		} = data;
 
 		const attack = this.calculateAttack(data);
@@ -40,7 +40,7 @@ export class KnightCalculationService {
 			keyAttribute,
 			attack,
 			exp,
-			deletedAt,
+			isDeleted,
 		};
 	}
 

@@ -88,11 +88,11 @@ describe('[FindKnightsUseCase]', () => {
 					KnightHelper.createWeapon({ equipped: true }),
 					KnightHelper.createWeapon({ equipped: true }),
 				],
-				deletedAt: true,
+				isDeleted: true,
 			}) as IKnight;
 
 			const knights = [firstKnight, secondKnight];
-			let deletedKnights = knights.filter((knight) => knight.deletedAt);
+			let deletedKnights = knights.filter((knight) => knight.isDeleted);
 			repositoryMock.find.mockResolvedValue(deletedKnights);
 
 			let result = await useCase.execute(EFilter.HEROES);
@@ -102,11 +102,11 @@ describe('[FindKnightsUseCase]', () => {
 
 			expect(result).toHaveLength(1);
 			expect(result[0].name).toBe('Lancelot');
-			expect(result[0].deletedAt).toBe(true);
+			expect(result[0].isDeleted).toBe(true);
 			expect(result).toMatchObject(calculationResponse);
 
-			secondKnight.deletedAt = false;
-			deletedKnights = knights.filter((knight) => knight.deletedAt);
+			secondKnight.isDeleted = false;
+			deletedKnights = knights.filter((knight) => knight.isDeleted);
 			repositoryMock.find.mockResolvedValue(deletedKnights);
 			result = await useCase.execute(EFilter.HEROES);
 

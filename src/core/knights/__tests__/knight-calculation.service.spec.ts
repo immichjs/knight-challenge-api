@@ -33,7 +33,7 @@ describe('KnightCalculationService - calculateAge', () => {
 					KnightHelper.createWeapon({ equipped: false, mod: 5 }),
 				],
 				keyAttribute: EAttribute.STRENGTH,
-				deletedAt: null,
+				isDeleted: null,
 			};
 
 			const result = service.processSingleKnightResponse(knightMock);

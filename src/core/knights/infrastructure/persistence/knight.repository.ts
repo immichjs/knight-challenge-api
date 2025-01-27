@@ -10,8 +10,8 @@ import { KnightMapper } from '../mapper/knight.mapper';
 export class KnightRepository implements IKnightRepository {
 	@InjectModel(Knight.name) private readonly repository: Model<Knight>;
 
-	public async find(deletedAt?: boolean): Promise<IKnight[]> {
-		const knights = await this.repository.find({ deletedAt });
+	public async find(isDeleted?: boolean): Promise<IKnight[]> {
+		const knights = await this.repository.find({ isDeleted });
 
 		return knights.map((knight) => KnightMapper.toDomain(knight));
 	}
@@ -50,7 +50,7 @@ export class KnightRepository implements IKnightRepository {
 
 	public async softDelete(id: string): Promise<void> {
 		await this.repository
-			.updateOne({ _id: id }, { $set: { deletedAt: true } })
+			.updateOne({ _id: id }, { $set: { isDeleted: true } })
 			.exec();
 	}
 }

@@ -64,7 +64,7 @@ pnpm install
 pnpm run start:dev
 ```
 
-Acesse API em http://localhost:3000.
+Acesse API em http://localhost:3001.
 
 ### Recursos
 
@@ -83,6 +83,7 @@ Antes de rodar o projeto, é necessário configurar o Google Auth. Siga os passo
 3. No backend (api), crie um arquivo .env com as seguintes variáveis:
 
 ```bash
+PORT=3001
 MONGO_USERNAME=<seu-username-mongo>
 MONGO_PASSWORD=<seu-password-mongo>
 MONGO_URI=mongodb://localhost

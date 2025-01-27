@@ -60,7 +60,7 @@ describe('[KnightRepository]', () => {
 				weapons: [KnightHelper.createWeapon({ equipped: true })],
 				attributes: KnightHelper.createAttribute(),
 				keyAttribute: EAttribute.INTELLIGENCE,
-				deletedAt: false,
+				isDeleted: false,
 			} as KnightDocument;
 			const knightsMock = [knight];
 
@@ -111,22 +111,22 @@ describe('[KnightRepository]', () => {
 					KnightHelper.createWeapon({ equipped: true }),
 					KnightHelper.createWeapon({ equipped: true }),
 				],
-				deletedAt: true,
+				isDeleted: true,
 			}) as KnightDocument;
 
 			const knightsMock = [firstKnight, secondKnight];
 
 			mockModel.find.mockResolvedValue(
-				knightsMock.filter((knight) => knight.deletedAt),
+				knightsMock.filter((knight) => knight.isDeleted),
 			);
 
 			let result = await repository.find(true);
 			expect(result).toHaveLength(1);
 			expect(result[0].name).toBe('Lancelot');
-			expect(result[0].deletedAt).toBe(true);
+			expect(result[0].isDeleted).toBe(true);
 
 			mockModel.find.mockResolvedValue(
-				knightsMock.filter((knight) => !knight.deletedAt),
+				knightsMock.filter((knight) => !knight.isDeleted),
 			);
 
 			result = await repository.find(true);
@@ -205,7 +205,7 @@ describe('[KnightRepository]', () => {
 			const knightMock = KnightHelper.createKnight({
 				_id: new Types.ObjectId(),
 				...knight,
-				deletedAt: false,
+				isDeleted: false,
 			}) as any;
 
 			mockModel.create.mockResolvedValue(knightMock);
@@ -260,7 +260,7 @@ describe('[KnightRepository]', () => {
 	});
 
 	describe('softDelete():', () => {
-		it('should soft delete a knight by setting deletedAt to true', async () => {
+		it('should soft delete a knight by setting isDeleted to true', async () => {
 			const knightId = new Types.ObjectId().toString();
 
 			mockModel.updateOne.mockReturnValue({
@@ -272,7 +272,7 @@ describe('[KnightRepository]', () => {
 			expect(model.updateOne).toHaveBeenCalledTimes(1);
 			expect(model.updateOne).toHaveBeenCalledWith(
 				{ _id: knightId },
-				{ $set: { deletedAt: true } },
+				{ $set: { isDeleted: true } },
 			);
 		});
 	});
