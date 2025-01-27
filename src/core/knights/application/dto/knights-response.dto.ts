@@ -14,4 +14,5 @@ export class KnightResponseDto {
 	attack: number;
 	exp: number;
 	isDeleted: boolean;
+	deletedAt: Date;
 }

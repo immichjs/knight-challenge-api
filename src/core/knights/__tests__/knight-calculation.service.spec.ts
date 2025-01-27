@@ -34,6 +34,7 @@ describe('KnightCalculationService - calculateAge', () => {
 				],
 				keyAttribute: EAttribute.STRENGTH,
 				isDeleted: null,
+				deletedAt: null,
 			};
 
 			const result = service.processSingleKnightResponse(knightMock);

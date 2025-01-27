@@ -3,6 +3,7 @@ import { Knight } from '@core/knights/domain/entities/knight';
 import { Weapon } from '@core/knights/domain/entities/weapon';
 import { EAttribute } from '@core/knights/domain/enums/attribute.enum';
 import { faker } from '@faker-js/faker';
+import * as moment from 'moment';
 import { Types } from 'mongoose';
 
 interface ICreateKnightHelperOptions {
@@ -14,6 +15,7 @@ interface ICreateKnightHelperOptions {
 	attributes: Attribute;
 	keyAttribute?: EAttribute;
 	isDeleted?: boolean;
+	deletedAt?: Date;
 }
 
 interface ICreateWeaponHelperOptions {
@@ -42,18 +44,24 @@ export class KnightHelper {
 		attributes,
 		keyAttribute,
 		isDeleted,
+		deletedAt,
 	}: ICreateKnightHelperOptions): Knight {
+		const birthdate = faker.date.birthdate({ mode: 'age', min: 0, max: 140 });
+		const safeBirthdate = moment(birthdate).isAfter(moment())
+			? moment().toDate()
+			: birthdate;
+
 		const knight = {
 			_id: _id ?? new Types.ObjectId(),
 			name: name ?? faker.person.firstName(),
-			birthday:
-				birthday ?? faker.date.birthdate({ mode: 'age', min: 0, max: 140 }),
+			birthday: birthday ?? safeBirthdate,
 			nickname: nickname ?? faker.internet.username(),
 			weapons,
 			attributes,
 			keyAttribute:
 				keyAttribute ?? faker.helpers.arrayElement(Object.values(EAttribute)),
 			isDeleted: isDeleted ?? false,
+			deletedAt: deletedAt,
 		};
 
 		return knight;

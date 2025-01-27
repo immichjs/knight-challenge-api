@@ -11,4 +11,5 @@ export class IKnight {
 	attributes: Attribute;
 	keyAttribute: EAttribute;
 	isDeleted: boolean;
+	deletedAt: Date;
 }

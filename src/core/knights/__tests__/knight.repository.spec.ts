@@ -112,6 +112,7 @@ describe('[KnightRepository]', () => {
 					KnightHelper.createWeapon({ equipped: true }),
 				],
 				isDeleted: true,
+				deletedAt: new Date(),
 			}) as KnightDocument;
 
 			const knightsMock = [firstKnight, secondKnight];
@@ -124,6 +125,7 @@ describe('[KnightRepository]', () => {
 			expect(result).toHaveLength(1);
 			expect(result[0].name).toBe('Lancelot');
 			expect(result[0].isDeleted).toBe(true);
+			expect(result[0].deletedAt).toStrictEqual(new Date());
 
 			mockModel.find.mockResolvedValue(
 				knightsMock.filter((knight) => !knight.isDeleted),
@@ -272,7 +274,7 @@ describe('[KnightRepository]', () => {
 			expect(model.updateOne).toHaveBeenCalledTimes(1);
 			expect(model.updateOne).toHaveBeenCalledWith(
 				{ _id: knightId },
-				{ $set: { isDeleted: true } },
+				{ $set: { isDeleted: true, deletedAt: new Date() } },
 			);
 		});
 	});

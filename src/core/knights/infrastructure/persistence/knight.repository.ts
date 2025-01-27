@@ -50,7 +50,10 @@ export class KnightRepository implements IKnightRepository {
 
 	public async softDelete(id: string): Promise<void> {
 		await this.repository
-			.updateOne({ _id: id }, { $set: { isDeleted: true } })
+			.updateOne(
+				{ _id: id },
+				{ $set: { isDeleted: true, deletedAt: new Date() } },
+			)
 			.exec();
 	}
 }

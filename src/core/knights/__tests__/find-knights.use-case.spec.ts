@@ -89,6 +89,7 @@ describe('[FindKnightsUseCase]', () => {
 					KnightHelper.createWeapon({ equipped: true }),
 				],
 				isDeleted: true,
+				deletedAt: new Date(),
 			}) as IKnight;
 
 			const knights = [firstKnight, secondKnight];
@@ -103,6 +104,7 @@ describe('[FindKnightsUseCase]', () => {
 			expect(result).toHaveLength(1);
 			expect(result[0].name).toBe('Lancelot');
 			expect(result[0].isDeleted).toBe(true);
+			expect(result[0].deletedAt).toStrictEqual(new Date());
 			expect(result).toMatchObject(calculationResponse);
 
 			secondKnight.isDeleted = false;

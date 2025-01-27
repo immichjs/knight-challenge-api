@@ -12,6 +12,7 @@ export class KnightMapper {
 			attributes: raw.attributes,
 			keyAttribute: raw.keyAttribute,
 			isDeleted: raw.isDeleted,
+			deletedAt: raw.deletedAt,
 		};
 	}
 }

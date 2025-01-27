@@ -10,6 +10,8 @@ import {
 	Controller,
 	Delete,
 	Get,
+	HttpCode,
+	HttpStatus,
 	Inject,
 	Param,
 	Patch,
@@ -21,6 +23,7 @@ import {
 export class KnightsController {
 	@Inject() private readonly knightsService: KnightsService;
 
+	@HttpCode(HttpStatus.OK)
 	@Get()
 	public async find(
 		@Query('filter', new OptionalParseEnumPipe(EFilter))
@@ -29,6 +32,7 @@ export class KnightsController {
 		return this.knightsService.find(filter);
 	}
 
+	@HttpCode(HttpStatus.OK)
 	@Get(':id')
 	public async findById(
 		@Param('id', ValidationObjectIdPipe) id: string,
@@ -36,6 +40,7 @@ export class KnightsController {
 		return this.knightsService.findById(id);
 	}
 
+	@HttpCode(HttpStatus.CREATED)
 	@Post()
 	public async create(
 		@Body() data: CreateKnightDto,
@@ -43,6 +48,7 @@ export class KnightsController {
 		return this.knightsService.create(data);
 	}
 
+	@HttpCode(HttpStatus.OK)
 	@Patch(':id')
 	public async update(
 		@Param('id', ValidationObjectIdPipe) id: string,
@@ -51,6 +57,7 @@ export class KnightsController {
 		return this.knightsService.update(id, data);
 	}
 
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@Delete(':id')
 	public async softDelete(@Param('id', ValidationObjectIdPipe) id: string) {
 		return this.knightsService.softDelete(id);

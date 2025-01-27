@@ -23,10 +23,11 @@ export class KnightCalculationService {
 			attributes,
 			keyAttribute,
 			isDeleted,
+			deletedAt,
 		} = data;
 
 		const attack = this.calculateAttack(data);
-		const age = this.calculateAge(birthday);
+		const age = this.calculateAge(birthday, deletedAt);
 		const exp = this.calculateExp(age);
 
 		return {
@@ -41,6 +42,7 @@ export class KnightCalculationService {
 			attack,
 			exp,
 			isDeleted,
+			deletedAt,
 		};
 	}
 
@@ -89,10 +91,13 @@ export class KnightCalculationService {
 		return exp;
 	}
 
-	private calculateAge(birthdate: Date | string): number {
+	private calculateAge(
+		birthdate: Date | string,
+		deletedAt?: Date | string,
+	): number {
 		const birth = moment(birthdate);
-		const today = moment();
+		const referenceDate = deletedAt ? moment(deletedAt) : moment();
 
-		return today.diff(birth, 'years');
+		return referenceDate.diff(birth, 'years');
 	}
 }

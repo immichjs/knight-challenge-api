@@ -32,6 +32,9 @@ export class Knight {
 
 	@Prop({ default: false })
 	isDeleted: boolean;
+
+	@Prop({ type: Date })
+	deletedAt: Date;
 }
 
 export const KnightSchema = SchemaFactory.createForClass(Knight);
